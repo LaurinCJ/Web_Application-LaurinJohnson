@@ -11,6 +11,7 @@ public class GameRepository : IGameRepository
     public async Task<List<Game>> GetAllAsync(string? titleSearch = null, string? franchiseSearch = null)
     {
         const string sql = """
+            
             SELECT g.GameId, g.GameTitle, g.ReleaseYear, g.FranchiseId, g.PlatformId,
                    f.FranchiseName, p.PlatformName
             FROM Games g
@@ -18,7 +19,9 @@ public class GameRepository : IGameRepository
             JOIN Platforms p ON g.PlatformId = p.PlatformId
             WHERE (@Title IS NULL OR g.GameTitle LIKE '%' + @Title + '%')
               AND (@Franchise IS NULL OR f.FranchiseName LIKE '%' + @Franchise + '%')
-            ORDER BY g.GameTitle;""";
+            ORDER BY g.GameTitle;
+            
+            """;
 
         var games = new List<Game>();
         await using var connection = _database.CreateConnection();
@@ -33,12 +36,15 @@ public class GameRepository : IGameRepository
 
     public async Task<Game?> GetByIdAsync(int gameId)
     {
-        const string sql = """SELECT g.GameId, g.GameTitle, g.ReleaseYear, g.FranchiseId, g.PlatformId, f.FranchiseName, p.PlatformName FROM Games g JOIN Franchises f ON g.FranchiseId=f.FranchiseId JOIN Platforms p ON g.PlatformId=p.PlatformId WHERE g.GameId=@Id;""";
+        const string sql = "SELECT g.GameId, g.GameTitle, g.ReleaseYear, g.FranchiseId, g.PlatformId, f.FranchiseName, p.PlatformName FROM Games g JOIN Franchises f ON g.FranchiseId = f.FranchiseId JOIN Platforms p ON g.PlatformId = p.PlatformId WHERE g.GameId = @Id;";
+
         await using var connection = _database.CreateConnection();
         await using var command = new SqlCommand(sql, connection);
         command.Parameters.AddWithValue("@Id", gameId);
+
         await connection.OpenAsync();
         await using var reader = await command.ExecuteReaderAsync();
+
         return await reader.ReadAsync() ? ReadGame(reader) : null;
     }
 
