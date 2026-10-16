@@ -1,0 +1,25 @@
+﻿@page
+@model GameLibrary.Web.Pages.Admin.Platforms.EditModel
+
+@{
+    ViewData["Title"] = "Edit Platform";
+}
+
+<h1>Edit Platform</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Platform.PlatformId" />
+
+    <p>
+        <label asp-for="Platform.PlatformName">Platform Name:</label>
+        <input asp-for="Platform.PlatformName" required />
+    </p>
+
+    <p>
+        <label asp-for="Platform.Manufacturer">Manufacturer:</label>
+        <input asp-for="Platform.Manufacturer" required />
+    </p>
+
+    <button type="submit">Save Changes</button>
+    <a asp-page="./Index">Cancel</a>
+</form>

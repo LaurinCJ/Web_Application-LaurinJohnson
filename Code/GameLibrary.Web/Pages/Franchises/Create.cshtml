@@ -1,0 +1,23 @@
+﻿@page
+@model GameLibrary.Web.Pages.Franchises.CreateModel
+
+@{
+    ViewData["Title"] = "Add Franchise";
+}
+
+<h1>Add Franchise</h1>
+
+<form method="post">
+    <p>
+        <label asp-for="Franchise.FranchiseName">Franchise Name:</label>
+        <input asp-for="Franchise.FranchiseName" required />
+    </p>
+
+    <p>
+        <label asp-for="Franchise.Publisher">Publisher:</label>
+        <input asp-for="Franchise.Publisher" required />
+    </p>
+
+    <button type="submit">Create Franchise</button>
+    <a asp-page="./Index">Cancel</a>
+</form>

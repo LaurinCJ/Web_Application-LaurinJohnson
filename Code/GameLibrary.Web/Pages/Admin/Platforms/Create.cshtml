@@ -1,0 +1,23 @@
+﻿@page
+@model GameLibrary.Web.Pages.Admin.Platforms.CreateModel
+
+@{
+    ViewData["Title"] = "Add Platform";
+}
+
+<h1>Add Platform</h1>
+
+<form method="post">
+    <p>
+        <label asp-for="Platform.PlatformName">Platform Name:</label>
+        <input asp-for="Platform.PlatformName" required />
+    </p>
+
+    <p>
+        <label asp-for="Platform.Manufacturer">Manufacturer:</label>
+        <input asp-for="Platform.Manufacturer" required />
+    </p>
+
+    <button type="submit">Create Platform</button>
+    <a asp-page="./Index">Cancel</a>
+</form>

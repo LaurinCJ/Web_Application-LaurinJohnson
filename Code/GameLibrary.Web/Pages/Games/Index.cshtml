@@ -1,4 +1,61 @@
 ﻿@page
 @model GameLibrary.Web.Pages.Games.IndexModel
+
 @{
+    ViewData["Title"] = "Games";
+}
+
+<h1>Games</h1>
+
+<p>
+    <a asp-page="./Create">Add a New Game</a>
+</p>
+
+<form method="get">
+    <label asp-for="TitleSearch">Game Title:</label>
+    <input asp-for="TitleSearch" />
+
+    <label asp-for="FranchiseSearch">Franchise:</label>
+    <input asp-for="FranchiseSearch" />
+
+    <button type="submit">Search</button>
+    <a asp-page="./Index">Clear</a>
+</form>
+
+@if (Model.Games.Count == 0)
+{
+    <p>No games were found.</p>
+}
+else
+{
+    <table class="games-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Release Year</th>
+                <th>Franchise</th>
+                <th>Platform</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Game game in Model.Games)
+            {
+                <tr>
+                    <td>@game.GameTitle</td>
+
+                    <td>@game.ReleaseYear</td>
+                    
+                    <td>@game.FranchiseName</td>
+                    
+                    <td>@game.PlatformName</td>
+                    
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@game.GameId">Edit</a> |
+                        <a asp-page="./Delete" asp-route-id="@game.GameId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }

@@ -1,0 +1,56 @@
+﻿@page
+@model GameLibrary.Web.Pages.Admin.Platforms.IndexModel
+
+@{
+    ViewData["Title"] = "Admin - Platforms";
+}
+
+<h1>Admin - Platforms</h1>
+
+<form method="get">
+    <label asp-for="Search">Search Name or Manufacturer:</label>
+    <input asp-for="Search" />
+
+    <button type="submit">Search</button>
+    <a asp-page="./Index">Clear</a>
+</form>
+
+<p>
+    This page is for platform administration.
+</p>
+
+<p>
+    <a asp-page="./Create">Add a New Platform</a>
+</p>
+
+@if (Model.Platforms.Count == 0)
+{
+    <p>No platforms were found.</p>
+}
+else
+{
+    <table class="games-table">
+        <thead>
+            <tr>
+                <th>Platform Name</th>
+                <th>Manufacturer</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Platform platform in Model.Platforms)
+            {
+                <tr>
+                    <td>@platform.PlatformName</td>
+
+                    <td>@platform.Manufacturer</td>
+
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@platform.PlatformId">Edit</a> |
+                        <a asp-page="./Delete" asp-route-id="@platform.PlatformId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

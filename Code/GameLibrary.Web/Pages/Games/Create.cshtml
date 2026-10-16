@@ -1,0 +1,33 @@
+﻿@page
+@model GameLibrary.Web.Pages.Games.CreateModel
+
+@{
+    ViewData["Title"] = "Add Game";
+}
+
+<h1>Add Game</h1>
+
+<form method="post">
+    <p>
+        <label asp-for="Game.GameTitle">Title:</label>
+        <input asp-for="Game.GameTitle" required />
+    </p>
+
+    <p>
+        <label asp-for="Game.ReleaseYear">Release Year:</label>
+        <input asp-for="Game.ReleaseYear" type="number" min="1970" max="2100" required />
+    </p>
+
+    <p>
+        <label asp-for="Game.FranchiseId">Franchise:</label>
+        <select asp-for="Game.FranchiseId" asp-items="Model.Franchises"></select>
+    </p>
+
+    <p>
+        <label asp-for="Game.PlatformId">Platform:</label>
+        <select asp-for="Game.PlatformId" asp-items="Model.Platforms"></select>
+    </p>
+
+    <button type="submit">Create Game</button>
+    <a asp-page="./Index">Cancel</a>
+</form>
