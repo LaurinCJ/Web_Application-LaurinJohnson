@@ -1,0 +1,22 @@
+﻿@page
+@model GameLibrary.Web.Pages.Franchises.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete Franchise";
+}
+
+<h1>Delete Franchise</h1>
+
+<p>Are you sure you want to delete this franchise?</p>
+
+<ul>
+    <li><strong>Franchise Name:</strong> @Model.Franchise.FranchiseName</li>
+    <li><strong>Publisher:</strong> @Model.Franchise.Publisher</li>
+</ul>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit">Delete Franchise</button>
+    <a asp-page="./Index">Cancel</a>
+</form>

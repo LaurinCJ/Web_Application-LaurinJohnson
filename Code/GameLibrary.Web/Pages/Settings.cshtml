@@ -1,0 +1,20 @@
+﻿@page
+@model GameLibrary.Web.Pages.SettingsModel
+
+@{
+    ViewData["Title"] = "Settings";
+}
+
+<h1>Settings</h1>
+
+<p>Choose a theme:</p>
+
+<button type="button" onclick="setTheme('light')">Light Theme</button>
+<button type="button" onclick="setTheme('dark')">Dark Theme</button>
+
+<script>
+    function setTheme(theme) {
+        document.body.classList.toggle("dark-theme", theme === "dark");
+        localStorage.setItem("selectedTheme", theme);
+    }
+</script>

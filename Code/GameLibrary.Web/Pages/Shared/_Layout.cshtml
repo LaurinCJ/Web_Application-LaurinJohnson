@@ -1,5 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>@ViewData["Title"] - Video Game Library</title><link rel="stylesheet" href="~/css/site.css" /></head>
-<body><header><a asp-page="/Index">Video Game Library</a></header><main class="container">@RenderBody()</main></body>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Video Game Library</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body id="pageBody">
+    <header>
+        <nav class="site-nav"> <!-- URL Additions/Changes linked to Buttons -->
+            <a asp-page="/Index">Home</a>
+            
+            <a asp-page="/Games/Index">Games</a>
+            
+            <a asp-page="/Franchises/Index">Franchises</a>
+            
+            <a asp-page="/Admin/Platforms/Index">Admin - Platforms</a>
+            
+            <a asp-page="/Settings">Settings</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        @RenderBody()
+    </main>
+    <script>
+        const savedTheme = localStorage.getItem("selectedTheme");
+
+        if (savedTheme === "dark") {
+            document.body.classList.add("dark-theme");
+        }
+    </script>
+</body>
 </html>

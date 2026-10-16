@@ -1,0 +1,22 @@
+﻿@page
+@model GameLibrary.Web.Pages.Admin.Platforms.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete Platform";
+}
+
+<h1>Delete Platform</h1>
+
+<p>Are you sure you want to delete this platform?</p>
+
+<ul>
+    <li><strong>Platform Name:</strong> @Model.Platform.PlatformName</li>
+    <li><strong>Manufacturer:</strong> @Model.Platform.Manufacturer</li>
+</ul>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit">Delete Platform</button>
+    <a asp-page="./Index">Cancel</a>
+</form>

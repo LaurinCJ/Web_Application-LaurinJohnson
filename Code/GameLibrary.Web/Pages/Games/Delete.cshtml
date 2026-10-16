@@ -1,0 +1,24 @@
+﻿@page
+@model GameLibrary.Web.Pages.Games.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete Game";
+}
+
+<h1>Delete Game</h1>
+
+<p>Are you sure you want to delete this game?</p>
+
+<ul>
+    <li><strong>Title:</strong> @Model.Game.GameTitle</li>
+    <li><strong>Release Year:</strong> @Model.Game.ReleaseYear</li>
+    <li><strong>Franchise:</strong> @Model.Game.FranchiseName</li>
+    <li><strong>Platform:</strong> @Model.Game.PlatformName</li>
+</ul>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit">Delete Game</button>
+    <a asp-page="./Index">Cancel</a>
+</form>

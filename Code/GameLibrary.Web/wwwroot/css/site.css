@@ -2,3 +2,55 @@ body { font-family: Arial, sans-serif; margin: 0; color: #222; }
 header { background: #202c39; padding: 1rem 2rem; }
 header a { color: white; font-weight: bold; text-decoration: none; }
 .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+.games-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+    .games-table th,
+    .games-table td {
+        border: 1px solid #cfcfcf;
+        padding: 0.75rem;
+        text-align: left;
+    }
+
+    .games-table th {
+        background-color: #202c39;
+        color: white;
+    }
+
+.site-nav {
+    display: flex;
+    gap: 0.75rem;
+}
+
+    .site-nav a {
+        background-color: #33495f;
+        border-radius: 4px;
+        padding: 0.5rem 0.75rem;
+    }
+
+        .site-nav a:hover {
+            background-color: #45617d;
+        }
+
+.dark-theme {
+    background-color: #1d1d1d;
+    color: #f5f5f5;
+}
+
+    .dark-theme .games-table th {
+        background-color: #111111;
+    }
+
+    .dark-theme .games-table td {
+        border-color: #666666;
+    }
+
+    .dark-theme input,
+    .dark-theme select {
+        background-color: #333333;
+        color: white;
+        border-color: #777777;
+    }

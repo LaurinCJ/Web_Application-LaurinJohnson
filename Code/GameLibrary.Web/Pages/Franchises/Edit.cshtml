@@ -1,0 +1,25 @@
+﻿@page
+@model GameLibrary.Web.Pages.Franchises.EditModel
+
+@{
+    ViewData["Title"] = "Edit Franchise";
+}
+
+<h1>Edit Franchise</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Franchise.FranchiseId" />
+
+    <p>
+        <label asp-for="Franchise.FranchiseName">Franchise Name:</label>
+        <input asp-for="Franchise.FranchiseName" required />
+    </p>
+
+    <p>
+        <label asp-for="Franchise.Publisher">Publisher:</label>
+        <input asp-for="Franchise.Publisher" required />
+    </p>
+
+    <button type="submit">Save Changes</button>
+    <a asp-page="./Index">Cancel</a>
+</form>
